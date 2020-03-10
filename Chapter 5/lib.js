@@ -4,7 +4,6 @@
 
 	let a;
 	let someNumber;
-	let isAdmin;
 
 	function randomInteger() {
 		let rand = Math.random() * 1000;
@@ -14,7 +13,7 @@
 	someNumber = randomInteger();
 	let shot = 10;
 
-	 window.start = function() {
+	window.start = function () {
 
 		for (shot; shot >= 1; shot--) {
 			while (!isFinite(a = prompt("Введите число. Осталось попыток: " + shot))) {
