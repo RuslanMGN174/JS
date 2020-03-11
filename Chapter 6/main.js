@@ -32,3 +32,47 @@ lastName и regDate (текущая дата и время).
 6. После нажатия «Отмена» выведите на экран (в консоль или при помощи alert)
  список всех пользователей с именами и датами регистрации (используйте для этого метод getAllUsers).
  */
+
+(function run() {
+	class User {
+		constructor(firstName, lastName) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.regDate = new Date();
+		}
+	}
+
+	class UserList {
+		constructor() {
+			this.users = [];
+			this.add = function (user) {
+				this.users.push(user);
+			}
+			
+			this.getAllUsers = function () {
+				var out = '';
+				for (let i = 0; i < this.users.length; i++) {
+					out += this.users[i].firstName + " " + this.users[i].lastName + " " + this.users[i].regDate + "\n";
+				}
+				alert(out);
+			}
+		}
+	}
+
+	window.start = function () {
+		var userList = new UserList();
+
+		while (true) {
+			var userData = prompt("Введите свое Имя и Фамилию...");
+			if (!userData) break;
+			var splitUserData = userData.split(" ");
+			var someUser = new User(splitUserData[0], splitUserData[1]);
+			userList.add(someUser);
+		}
+
+		userList.getAllUsers();
+	}
+
+})();
+
+start();
