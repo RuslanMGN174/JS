@@ -48,7 +48,7 @@ lastName и regDate (текущая дата и время).
 			this.add = function (user) {
 				this.users.push(user);
 			}
-			
+
 			this.getAllUsers = function () {
 				var out = '';
 				for (let i = 0; i < this.users.length; i++) {
@@ -62,12 +62,40 @@ lastName и regDate (текущая дата и время).
 	window.start = function () {
 		var userList = new UserList();
 
+		function isUserExist(arr, str) {
+			for (var i = 0; i < arr.length; i++) {
+				if (str[0] == arr[i].firstName &&
+					str[1] == arr[i].lastName) {
+
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+
 		while (true) {
-			var userData = prompt("Введите свое Имя и Фамилию...");
+			var userData;
+			var regex = /([а-я]+)\s([а-я]+)/i;
+
+			while (!regex.test(userData = prompt("Введите свое Имя и Фамилию..."))) {
+				if (userData == null) {
+					break;
+				}
+
+				alert("Введите 2 слова через пробел в кириллической раскладке");
+			}
+
+
 			if (!userData) break;
 			var splitUserData = userData.split(" ");
-			var someUser = new User(splitUserData[0], splitUserData[1]);
-			userList.add(someUser);
+
+			if (isUserExist(userList.users, splitUserData)) {
+				alert("Такой пользователь уже зарегистрирован. Пожалуйста введите другие данные...")
+			} else {
+				var someUser = new User(splitUserData[0], splitUserData[1]);
+				userList.add(someUser);
+			}
 		}
 
 		userList.getAllUsers();
