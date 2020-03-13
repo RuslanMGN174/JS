@@ -76,7 +76,7 @@ lastName и regDate (текущая дата и время).
 
 		while (true) {
 			var userData;
-			var regex = /([а-я]+)\s([а-я]+)/i;
+			var regex = /([а-я]+)\s([а-я]+$)/i;
 
 			while (!regex.test(userData = prompt("Введите свое Имя и Фамилию..."))) {
 				if (userData == null) {

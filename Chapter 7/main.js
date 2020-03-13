@@ -46,10 +46,10 @@ class Airplane extends Vehicle {
 	fly(height) {
 		this.height = height;
 
-		if (height < 100) {
-			alert(`${this.name} не может летать на такой высоте.`)
+		if (height > 15000 || height < 100) {
+			alert(`${this.name} не может летать на такой высоте.`);
 		} else {
-			alert(`${this.name} может летать на высоте ${this.height} м.`)
+			alert(`${this.name} может летать на высоте ${this.height} м.`);
 		}
 	}
 }
