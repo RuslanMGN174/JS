@@ -28,19 +28,13 @@ class Vehicle {
 
 class Car extends Vehicle {
 	constructor(name, frame, gear) {
-		super(name, frame, gear);
-		this.name = "Автомобиль";
-		this.frame = "Кузов";
-		this.gear = "Колёса";
+		super("Автомобиль", "Кузов", "Колёса");
 	}
 }
 
 class Airplane extends Vehicle {
 	constructor(name, frame, gear) {
-		super(name, frame, gear);
-		this.name = "Самолёт";
-		this.frame = "Фюзеляж";
-		this.gear = "Шасси";
+		super("Самолёт", "Фюзеляж", "Шасси");
 	}
 
 	fly(height) {
@@ -56,9 +50,7 @@ class Airplane extends Vehicle {
 
 class Ship extends Vehicle {
 	constructor(name, frame) {
-		super(name, frame);
-		this.name = "Корабль";
-		this.frame = "Корпус";
+		super("Корабль", "Корпус", "Парус");
 	}
 
 	move() {
