@@ -15,13 +15,7 @@ function filterByType() {
 
 	switch (firstArg) {
 		case "number":
-			getNewArgs(args, firstArg);
-			break;
-
 		case "string":
-			getNewArgs(args, firstArg);
-			break;
-
 		case "boolean":
 			getNewArgs(args, firstArg);
 			break;
@@ -39,4 +33,4 @@ function getNewArgs(args, firstArg) {
 	alert(args.filter(item => dataType(item) == firstArg));
 }
 
-filterByType("gjh", 10, 20, "a", "b", true, false);
+filterByType("sdc", 10, 20, "a", "b", true, false);
