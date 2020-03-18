@@ -1,6 +1,6 @@
 function showArgs () {
-	// console.log("Передано аргументов: " + arguments.length);
-	// console.log(arguments);
+	console.log("Передано аргументов: " + arguments.length);
+	console.log(arguments[2]);
 
 	//Разничия между псевдомассивом arguments и обычным массивом
 	// console.log(arguments.constructor.name);
