@@ -21,7 +21,7 @@ function filterByType() {
 			break;
 
 		default:
-			alert("Нет таких значений");
+			console.log("Нет таких значений");
 	}
 }
 
@@ -30,7 +30,7 @@ function dataType(obj) {
 }
 
 function getNewArgs(args, firstArg) {
-	alert(args.filter(item => dataType(item) == firstArg));
+	console.log(args.filter(item => dataType(item) == firstArg));
 }
 
-filterByType("sdc", 10, 20, "a", "b", true, false);
+filterByType("boolean", 10, 20, "a", "b", true, false);

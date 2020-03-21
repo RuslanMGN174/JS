@@ -33,27 +33,4 @@ console.log ("Сегодня " + day + " " + month + " " + year + " года, " 
 						+ " " + minutes + " " + declOfNum (minutes, ['минута', 'минуты', 'минут'])
 						+ " " + seconds + " " + declOfNum (seconds, ['секунда', 'секунды', 'секунд']))
 
-	// var hour = myDate.getHours().toString().slice(-1);
-	// var minute = myDate.getMinutes().toString().slice(-1);
-	// var second = myDate.getSeconds().toString().slice(-1);
-	//
-	// var hoursFormat = myDate.getHours() >= 11 && myDate.getHours() < 15 ? "часов" :
-	// 									hour > 1 && hour < 5 ? "часа" :
-	// 									hour == 1 ? "час" :	"часов";
-	// var minutesFormat = myDate.getMinutes() >= 11 && myDate.getMinutes() < 15 ? "минут" :
-	// 										minute > 1 && minute < 5 ? "минуты" :
-	// 										minute == 1 ? "минута" : "минут";
-	// var secondsFormat = myDate.getSeconds() >= 11 && myDate.getSeconds() < 15 ? "секунд" :
-	// 										second > 1 && second < 5 ? "секунды" :
-	// 										second == 1 ? "секунда" : "секунд";
-	//
-	// var fullTime = myDate.getHours() + " " + hoursFormat +
-	// 								" " + myDate.getMinutes() + " " + minutesFormat +
-	// 								" " + myDate.getSeconds() + " " + secondsFormat;
-	// var fullDate = "Сегодня " + myDate.getDate() +
-	// 								" " + months[myDate.getMonth()] +
-	//                 " " + myDate.getFullYear() +
-	// 								", " + days[myDate.getDay()];
-
-	// console.log(fullDate + ", " + fullTime);
 }, 1000)
