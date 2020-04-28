@@ -33,13 +33,12 @@ LocalStorage (последний сохраненный вариант).
 
 	//смена состояния кнопок при нажатии "Редактировать"
 	editButton.onclick = function () {
+		
 		editButton.disabled = true;
 		saveButton.disabled = false;
 		cancelButton.disabled = false;
 
 		content.contentEditable = true;
-		
-
 	}
 	//смена состояния кнопок при нажатии "Сохранить" и "Отмена"
 	if (!editButton.disabled) {
@@ -63,7 +62,4 @@ LocalStorage (последний сохраненный вариант).
 			content.contentEditable = false;
 		}
 	}
-
-
-
 })()
