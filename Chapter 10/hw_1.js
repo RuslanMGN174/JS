@@ -1,3 +1,4 @@
+"use strict";
 /*
 Разработать простой текстовый редактор с возможностью сохранения контента в LocalStorage.
 
@@ -28,7 +29,7 @@ LocalStorage (последний сохраненный вариант).
 
 	//Подгружаем последнее сохранение если оно есть
 	if(localStorage.length > 0) {
-		content.textContent = localStorage.getItem(localStorage.key(localStorage.length - 1));
+		content.textContent = localStorage.getItem("Alice");
 	}
 
 	//смена состояния кнопок при нажатии "Редактировать"
