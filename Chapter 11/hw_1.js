@@ -1,65 +1,54 @@
 /*
-Разработать простой текстовый редактор с возможностью сохранения контента в LocalStorage.
-
-Страница должна состоять из:
-
-Блока с текстом
-Кнопки «Редактировать»
-Кнопок «Сохранить» и «Отмена» (по умолчанию неактивных — disabled)
-Механика работы страницы:
-
-- при первой загрузке страницы в блоке с текстом отображается текст по умолчанию (любой);
-- при нажатии на кнопку «Редактировать» блок с текстом становится редактируемым (contenteditable=true), 
-кнопки «Сохранить» и «Отмена» становятся активными, а сама кнопка «Редактировать» — неактивной;
-- при нажатии на кнопку «Сохранить» содержимое блока с текстом сохраняется в LocalStorage, 
-а режим редактирования отключается (кнопки возвращаются в исходное состояние);
-- при нажатии на кнопку «Отмена» содержимое блока с текстом заменяется на последний сохраненный вариант 
-изLocalStorage, режим редактирования отключается;
-При следующих перезагрузках страницы содержимое блока с текстом автоматически подтягивается из 
-LocalStorage (последний сохраненный вариант).
+Создать свой маленький переводчик на основе API Яндекс.Переводчика.
  */
 
 
 (() => {
-	var editButton = document.getElementById("edit");
-	var saveButton = document.getElementById("save");
-	var cancelButton = document.getElementById("cancel");
-	var content = document.getElementById("content");
+	document
+		.getElementById("btn")
+		.onclick = function (ev) {
+			ev.preventDefault();
 
-	//Подгружаем последнее сохранение если оно есть
-	if(localStorage.length > 0) {
-		content.textContent = localStorage.getItem("Alice");
-	}
+			var wordForTranslate = document.getElementById("in").value;
 
-	//смена состояния кнопок при нажатии "Редактировать"
-	editButton.onclick = function () {
-		
-		editButton.disabled = true;
-		saveButton.disabled = false;
-		cancelButton.disabled = false;
+			// Сохраняем ключ API, полученный со страницы https://tech.yandex.ru/keys/get/?service=trnsl
+			// (с примером ниже работать не будет, нужно получить и вставить свой!)
+			var API_KEY = 'some key...';
 
-		content.contentEditable = true;
-	}
-	//смена состояния кнопок при нажатии "Сохранить" и "Отмена"
-	if (!editButton.disabled) {
-		saveButton.onclick = function () {
-			
-			editButton.disabled = false;
-			saveButton.disabled = true;
-			cancelButton.disabled = true;
+			// Сохраняем адрес API
+			var url = 'https://translate.yandex.net/api/v1.5/tr.json/translate';
 
-			localStorage.setItem("Alice", content.textContent);
-			content.contentEditable = false;
+			// Формируем полный адрес запроса:
+			url += '?key=' + API_KEY; // добавляем к запросу ключ API
+			url += '&text=' + wordForTranslate; // текст для перевода
+			url += '&lang=ru-en'; // направление перевода: с русского на английский
+
+			// Таким образом формируется строка вида:
+			// https://translate.yandex.net/api/v1.5/tr.json/translate?key=example_api_key&text=кролики&lang=ru-en
+
+			var translate = document.querySelector('.translate');
+
+			window.fetch(url)
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (response) {
+
+					// Проверяем статус-код, который прислал сервер
+					// 200 — это ОК, остальные — ошибка или что-то другое
+					if (response.code !== 200) {
+						translate.innerHTML = 'Произошла ошибка при получении ответа от сервера:\n\n' + response.message;
+						return;
+					}
+
+					// Проверяем, найден ли перевод для данного слова
+					if (response.text.length === 0) {
+						translate.innerHTML = 'К сожалению, перевод для данного слова не найден';
+						return;
+					}
+
+					// Если все в порядке, то отображаем перевод на странице
+					translate.innerHTML = response.text.join('<br>'); // вставляем его на страницу
+				})
 		}
-
-		cancelButton.onclick = function () {
-			
-			editButton.disabled = false;
-			saveButton.disabled = true;
-			cancelButton.disabled = true;
-
-			content.textContent = localStorage.getItem("Alice");
-			content.contentEditable = false;
-		}
-	}
 })()
