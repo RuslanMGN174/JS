@@ -1,12 +1,34 @@
 .football {
-    position: relative;
-    margin-top: 20px; margin-bottom: 20px;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .field {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 .ball {
-    position: absolute; top: 0; left: 0;
-    width: 100px; height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.bblock {
+  display: table-cell;
+  font-size: 50px;
+  color: white;
+  width: 200px;
+  height: 200px;
+  background: dodgerblue;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#count {
+  margin: auto;
+  display: table;
+  border-spacing: 20px 20px;
+  background-color: white;
 }
