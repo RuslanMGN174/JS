@@ -1,0 +1,24 @@
+{
+  "name": "hello-nodejs",
+  "version": "1.0.0",
+  "description": "Simple program in JS for Node.js",
+  "main": "hello_lesson_14.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-minify": "^3.1.0",
+    "webpack": "^4.43.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hello",
+    "node.js"
+  ],
+  "author": "Ruslan Knyazev",
+  "license": "MIT"
+}
