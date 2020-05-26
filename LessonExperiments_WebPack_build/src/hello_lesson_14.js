@@ -4,4 +4,5 @@ export class MyNewClass {
         const bar = x => x * x;
         console.log(bar(foo));
     }
+
 }
