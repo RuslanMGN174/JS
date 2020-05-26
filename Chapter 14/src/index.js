@@ -1,4 +1,7 @@
+"use strict";
+
+import "./css/style.css"
 
 $("button").click(function () {
-  document.querySelector("p").innerHTML++;
+  document.querySelector("h1").innerHTML++;
 });
