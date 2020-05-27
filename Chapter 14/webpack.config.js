@@ -1,6 +1,6 @@
 const path = require("path");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
@@ -10,7 +10,11 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "build")
   },
-
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  },
   module: {
     rules: [
       {
@@ -22,11 +26,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-        // use: ExtractTextPlugin.extract(
-        //   {
-        //     use: ['style-loader', 'css-loader']
-        //   })
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(png|gif|svg|jpg)$/,
@@ -35,12 +35,14 @@ module.exports = {
     ]
   },
   plugins: [
-    // new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html'
     }),
 
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "style.[contenthash].css"
+    })
   ]
 };
