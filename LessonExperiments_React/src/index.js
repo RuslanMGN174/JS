@@ -2,11 +2,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-
-// React-компонент (функциональный)
-const HelloWorld = () => {
-  return <h1>Hello world</h1>
-}
+import TodoItem from "./todo-item"
 
 // React-компонент (основанный на классе)
 class TodoApp extends React.Component {
@@ -19,7 +15,8 @@ class TodoApp extends React.Component {
         { name: "Настроить webpack", checked: true },
         { name: "Запустить webpack", checked: true },
         { name: "Написать TodoApp", checked: false }
-      ]
+      ],
+      newTodoText: ""
     };
   }
 
@@ -37,29 +34,60 @@ class TodoApp extends React.Component {
       }
     });
 
-    this.setState({todos});
+    // Обновляем состояние приложения
+    this.setState({ todos });
+  }
+
+  addTodo() {
+    const todos = this.state.todos;
+    todos.push({
+      name: this.state.newTodoText,
+      checked: false
+    });
+
+    // Обновляем состояние приложения
+    this.setState({
+      todos,
+      newTodoText: ""
+    });
 
   }
 
   render() {
     return (
-      <ol>
-        {
-          this.state.todos.map((todo, i) => {
-            const isChecked = todo.checked ? "checked" : "";
+      <div>
 
-            return (
-              <li
+        <h2>ToDo List</h2>
+
+        <ol>
+          {
+            this.state.todos.map((todo, i) => {
+              return (
+                <TodoItem 
                 key={i}
-                className={isChecked}
-                onClick={ev => { this.toggleTodo(i) }}
-              >
-                {todo.name}
-              </li>
-            )
-          })
-        }
-      </ol>
+                name={todo.name}
+                checked={todo.checked}
+                toggleTodo={this.toggleTodo.bind(this, i)}
+                />
+              )
+            })
+          }
+        </ol>
+
+        <input
+          type="text"
+          placeholder="Навоя задача"
+          value={this.state.newTodoText}
+          onChange={ev => {
+            this.setState({ newTodoText: ev.target.value })
+          }}
+          onKeyUp={ev => {
+            if (ev.keyCode === 13) {
+              this.addTodo();
+            }
+          }}
+        />
+      </div>
     );
   }
 }
