@@ -34,7 +34,7 @@ function App() {
         id: Date.now(),
         completed: false
       }
-     ]))
+    ]))
   }
 
   return (
