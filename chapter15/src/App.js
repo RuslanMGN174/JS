@@ -5,12 +5,11 @@ function App() {
   return (
     <div>
       <div className="sidenav">
-      <Modal />
+        <Modal />
+      </div>
+      <div class="main">
         
       </div>
-
-      
-
     </div>
   );
 }
