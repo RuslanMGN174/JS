@@ -24,7 +24,7 @@ function App() {
       <div className="sidenav">
         <Modal create={addComment} />
       </div>
-      <div class="main">
+      <div className="main">
         {comments.length
           ? (<CommentsList comments={comments}/>)
           : (<p>No comments yet!</p>)}
