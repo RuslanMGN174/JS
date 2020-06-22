@@ -1,5 +1,7 @@
 import React from "react";
 import "./Modal.css";
+import PropTypes from "prop-types";
+
 
 const styles = {
   textarea: {
@@ -22,6 +24,11 @@ const styles = {
 }
 
 export default class Modal extends React.Component {
+  constructor(create){
+    super();
+    this.create = create;
+  }
+
   state = {
     isOpen: false
   }
@@ -33,10 +40,10 @@ export default class Modal extends React.Component {
         {this.state.isOpen && (<div className="modal">
           <div className="modal-body">
             <div>
-              <input placeholder="Enter your Name"  />
+              <input placeholder="Enter your Name" />
             </div>
             <div style={styles.div} >
-              <textarea style={styles.textarea} placeholder="Enter your comment"/>
+              <textarea style={styles.textarea} placeholder="Enter your comment" />
             </div>
             <div style={styles.div} >
               <button style={styles.button} onClick={() => this.setState({ isOpen: false })}>OK</button>
@@ -49,4 +56,8 @@ export default class Modal extends React.Component {
       </React.Fragment>
     );
   }
+}
+
+Modal.propTypes = {
+  create: PropTypes.func.isRequired
 }
