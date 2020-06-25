@@ -18,16 +18,6 @@ export class Container extends Component {
 		this.toggleScrollLock();
 	};
 
-	// onFocus = () => {
-	// 		this.setState({
-	// 			focus: true,
-	// 		});
-	// }
-
-	// focus = () => {
-	// 	this.textInput.current.focus();
-	// }
-
 	closeModal = () => {
 		this.setState({ isShown: false });
 		this.TriggerButton.focus();

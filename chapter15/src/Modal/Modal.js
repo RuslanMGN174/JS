@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Modal.css";
 
 
 const styles = {
   textarea: {
-    // marginLeft: "auto",
-    // marginRight: "auto"
     width: "394px",
     height: "100px",
     resize: "none",
@@ -22,12 +20,6 @@ const styles = {
   }
 }
 
-function submitHandler(event) {
-  event.preventDefault();
-}
-
-const [value, setValue] = useState("");
-
 export default class Modal extends React.Component {
   state = {
     isOpen: false
@@ -40,7 +32,7 @@ export default class Modal extends React.Component {
         <a href="#about" onClick={() => this.setState({ isOpen: true })}>New comment</a>
         {this.state.isOpen && (<div className="modal">
           <div className="modal-body">
-            <form onSubmit={submitHandler}>
+            <form >
               <div>
                 <input
                   placeholder="Enter your Name"

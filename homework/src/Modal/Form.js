@@ -1,11 +1,14 @@
 import React from 'react';
 
-export const Form = ({ onSubmit, inputFocus }) => {
+export const Form = ({
+  onSubmit,
+  inputFocus
+}) => {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input className="form-control" id="name" ref={inputFocus}/>
+        <input className="form-control" id="name" ref={inputFocus} />
       </div>
       <div className="form-group">
         <label htmlFor="email">Email address</label>
