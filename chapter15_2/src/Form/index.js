@@ -17,26 +17,30 @@ const styles = {
     // textAlign: "center"
   },
 
+  divCenter: {
+    marginBottom: "1rem",
+    textAlign: "center"
+  },
+
   label: {
     display: "inline-block",
     marginBottom: ".5rem"
+  },
+
+  button: {
+    width: "400px",
   }
 }
 
 export const Form = ({
   onSubmit,
   inputFocus,
-  onCancel
 }) => {
   return (
-    <form onSubmit={onSubmit} >
+    <form  onSubmit={onSubmit}>
       <div style={styles.div}>
         <label htmlFor="name">Name</label>
-        <input
-          style={styles.input}
-          placeholder="Enter your Name"
-          id="name"
-          ref={inputFocus}
+        <input style={styles.input} id="name" ref={inputFocus}
         />
       </div>
       <div style={styles.div} >
@@ -46,9 +50,8 @@ export const Form = ({
           id="comment"
         />
       </div>
-      <div style={styles.div} >
-        <button type="submit" style={styles.button}>OK</button>
-        <button style={styles.button}>Cancel</button>
+      <div style={styles.divCenter} >
+        <button type="submit" style={styles.button}>Submit</button>
       </div>
     </form>
   );

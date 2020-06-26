@@ -28,6 +28,12 @@ export class Container extends Component {
     this.closeModal();
   };
 
+  onSubmit = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.name.value);
+    console.log(event.target.comment.value);
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -37,10 +43,10 @@ export class Container extends Component {
         />
         {this.state.isOpen ? (
           <Modal
-            onSubmit={this.props.onSubmit}
+            onSubmit={this.onSubmit}
             inputFocus={(a) => (this.textInput = a)}
             onKeyDown={this.onKeyDown}
-            onCancel={this.closeModal}
+            closeModal={this.closeModal}
             // onClickOutside={this.onClickOutside}
           />
         ) : null}

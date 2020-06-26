@@ -4,12 +4,21 @@ import { Form } from '../Form/index.js';
 import FocusTrap from 'focus-trap-react';
 import "./Modal.css";
 
+const styles = {
+  button: {
+    width: "400px",
+  }
+
+}
+
 export const Modal = ({
   onSubmit,
   inputFocus,
   onClickOutside,
   onKeyDown,
-  onCancel
+  closeModal,
+  modalRef
+
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -17,12 +26,14 @@ export const Modal = ({
         onClick={onClickOutside}
         onKeyDown={onKeyDown}
       >
-        <div className="modal">
+        <div className="modal" ref={modalRef}>
           <div className="modal-body">
             <Form
               onSubmit={onSubmit}
-              inpurFocus={inputFocus}
-              onClick={onCancel} />
+              inputFocus={inputFocus}
+            />
+            <button style={styles.button} onClick={closeModal}>Cancel</button>
+
           </div>
         </div>
       </aside>
