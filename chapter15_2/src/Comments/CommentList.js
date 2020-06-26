@@ -13,11 +13,11 @@ const styles = {
 function CommentsList(props) {
   return (
     <ul style={styles.ul}>
-      {props.comments.map((comment, author) => {
+      {props.comments.map((comment, author, date) => {
         return <CommentItem
           author={author}
           comment={comment}
-          date={new Date().toLocaleString()}
+          date={date}
           key={comment.id}
         />
       })}

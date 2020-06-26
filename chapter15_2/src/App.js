@@ -11,11 +11,7 @@ function App() {
   //   console.log(event.target.comment.value);
   // }
 
-  const [comments, setComments] = React.useState([
-    // { id: 1, author: "qwe", text: "Купить хлеб" },
-    // { id: 2, author: "asd", text: "Купить масло" },
-    // { id: 3, author: "zxc", text: "Купить молоко" }
-  ]);
+  const [comments, setComments] = React.useState([]);
 
   const removeComment = (id) => {
     setComments(comments.filter(comment => comment.id !== id));
@@ -26,12 +22,11 @@ function App() {
       {
         id: Date.now(),
         author: event.target.name.value,
-        text: event.target.comment.value
+        text: event.target.comment.value,
+        date: new Date().toLocaleString()
       }
     ]))
   }
-
-
 
   return (
     <Context.Provider value={{ removeComment }}>
