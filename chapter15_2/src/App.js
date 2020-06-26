@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from './Container';
+import CommentsList from "./Comments/CommentList.js"
 
 function App() {
   const launchButtonText = "New Comment";
@@ -9,16 +10,28 @@ function App() {
   //   console.log(event.target.comment.value);
   // }
 
-  return (
-    <div className="sidenav">
-      <Container 
-      launchButtonText={launchButtonText}
-      // onSubmit={onSubmit}
-       />
-    </div>
-    // <div className="main">
+  const [comments, setComments] = React.useState([
+    { id: 1, author: "qwe", comment: "Купить хлеб" },
+    { id: 2, author: "asd", comment: "Купить масло" },
+    { id: 3, author: "zxc", comment: "Купить молоко" }
 
-    // </div>
+  ]);
+
+
+  return (
+    <div>
+      <div className="sidenav">
+        <Container
+          launchButtonText={launchButtonText}
+        // onSubmit={onSubmit}
+        />
+      </div>
+      <div className="main">
+        {comments.length
+          ? (<CommentsList comments={comments} />)
+          : (<p>No comments yet!</p>)}
+      </div>
+    </div>
   );
 }
 
