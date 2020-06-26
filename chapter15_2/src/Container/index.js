@@ -28,11 +28,12 @@ export class Container extends Component {
     this.closeModal();
   };
 
-  onSubmit = (event) => {
-    event.preventDefault(event);
-    console.log(event.target.name.value);
-    console.log(event.target.comment.value);
-  }
+  // onSubmit = (event) => {
+  //   event.preventDefault(event);
+  //   console.log(event.target.name.value);
+  //   console.log(event.target.comment.value);
+  //   this.closeModal();
+  // }
 
   render() {
     return (
@@ -43,7 +44,7 @@ export class Container extends Component {
         />
         {this.state.isOpen ? (
           <Modal
-            onSubmit={this.onSubmit}
+            onSubmit={this.props.onSubmit}
             inputFocus={(a) => (this.textInput = a)}
             onKeyDown={this.onKeyDown}
             closeModal={this.closeModal}

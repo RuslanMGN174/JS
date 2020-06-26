@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Style.css";
+import Context from "../Context";
 
-function NewComment({ date, comment }) {
+function CommentItem({ date, comment }) {
+
+  const {removeComment} = useContext(Context);
 
   return (
     <li className="media-left">
@@ -11,14 +14,14 @@ function NewComment({ date, comment }) {
           <div className="metadata">
             <span className="date">{date}</span>
             <span className="devide"> | </span>
-            <span className="delete"> Удалить </span>
+            <span className="delete" onClick={removeComment.bind(null, comment.id)}> Удалить </span>
           </div>
         </div>
-        <div className="media-text text-justify">{comment.comment}
+        <div className="media-text text-justify">{comment.text}
         </div>
       </div>
     </li>
   )
 };
 
-export default NewComment;
+export default CommentItem;

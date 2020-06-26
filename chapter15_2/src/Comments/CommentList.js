@@ -1,5 +1,5 @@
 import React from "react";
-import NewComment from "./Comment";
+import CommentItem from "./CommentItem";
 
 
 const styles = {
@@ -14,7 +14,7 @@ function CommentsList(props) {
   return (
     <ul style={styles.ul}>
       {props.comments.map((comment, author) => {
-        return <NewComment
+        return <CommentItem
           author={author}
           comment={comment}
           date={new Date().toLocaleString()}
