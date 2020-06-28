@@ -1,5 +1,5 @@
 import React from "react";
-import NewComment from "./Comment";
+import NewComment from "./NewComment";
 
 
 const styles = {
@@ -10,14 +10,14 @@ const styles = {
   }
 };
 
-function CommentsList(props) {
+const CommentsList = (props) => {
   return (
     <ul style={styles.ul}>
-      {props.comments.map((comment, author) => {
+      {props.comments.map((comment, author, date) => {
         return <NewComment
           author={author}
           comment={comment}
-          date={new Date().toLocaleString()}
+          date={date}
           key={comment.id}
         />
       })}

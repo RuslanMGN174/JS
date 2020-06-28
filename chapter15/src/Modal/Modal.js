@@ -1,8 +1,12 @@
 import React from "react";
 import "./Modal.css";
 
-
 const styles = {
+
+  input: {
+    width: "394px"
+  },
+
   textarea: {
     width: "394px",
     height: "100px",
@@ -10,16 +14,25 @@ const styles = {
   },
 
   div: {
-    marginTop: "10px",
+    marginBottom: "1rem",
+    // textAlign: "center"
+  },
+
+  divCenter: {
+    marginBottom: "1rem",
     textAlign: "center"
   },
 
+  label: {
+    display: "inline-block",
+    marginBottom: ".5rem"
+  },
+
   button: {
-    width: "70px",
-    margin: "10px"
+    width: "400px",
+    marginBottom: "1rem"
   }
 }
-
 export default class Modal extends React.Component {
   state = {
     isOpen: false
@@ -32,28 +45,26 @@ export default class Modal extends React.Component {
         <a href="#about" onClick={() => this.setState({ isOpen: true })}>New comment</a>
         {this.state.isOpen && (<div className="modal">
           <div className="modal-body">
-            <form >
-              <div>
-                <input
-                  placeholder="Enter your Name"
-                  value={value}
-                  onChange={event => setValue(event.target.value)} />
+            <form onSubmit={this.props.onSubmit}>
+              <div style={styles.div}>
+                <label htmlFor="name">Name</label>
+                <input autoFocus
+                  style={styles.input}
+                  id="name"
+                  required
+                />
               </div>
               <div style={styles.div} >
+                <label htmlFor="comment">Comment</label>
                 <textarea
                   style={styles.textarea}
-                  placeholder="Enter your comment"
-                  value={value}
-                  onChange={event => setValue(event.target.value)} />
+                  id="comment"
+                  required 
+                  />
               </div>
-              <div style={styles.div} >
-                <button
-                  type="submit"
-                  style={styles.button}
-                  onClick={() => this.setState({ isOpen: false })}>OK</button>
-                <button
-                  style={styles.button}
-                  onClick={() => this.setState({ isOpen: false })}>Cancel</button>
+              <div style={styles.divCenter} >
+                <button type="submit" style={styles.button}>Submit</button>
+                <button style={styles.button} onClick={() => this.setState({ isOpen: false })}>Close</button>
               </div>
             </form>
           </div>
