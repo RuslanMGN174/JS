@@ -15,7 +15,6 @@ function App () {
         <div className='col'>
           FETCHED POSTS
         </div>
-
       </div>
     </div>
   )
