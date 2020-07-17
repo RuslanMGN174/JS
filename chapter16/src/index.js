@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import { App } from './containers/App'
-import * as serviceWorker from './serviceWorker'
 import { createStore } from 'redux'
+import { App } from './containers/App'
+import './index.css'
 import reducer from './reducers/Reducers'
+import * as serviceWorker from './serviceWorker'
 
-const initialState = []
-const store = createStore(reducer, initialState)
+const initialState = [{ id: Date.now(), author: 'Admin', text: 'some text', date: new Date().toLocaleString() }]
+const store = createStore(reducer, initialState);
 
 ReactDOM.render(
   <React.StrictMode>

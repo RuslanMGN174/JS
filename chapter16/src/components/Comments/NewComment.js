@@ -4,7 +4,7 @@ import Context from "../../Context";
 
 const NewComment = ({ comment }) => {
 
-  const { removeComment } = useContext(Context);
+  const { delComment } = useContext(Context);
   const clearText = text => {
     return (
       text.replace(/<!--[\s\S]*?--!?>/g, "").replace(/<\/?[a-z][^>]*(>|$)/gi, "")
@@ -19,7 +19,7 @@ return (
         <div className="metadata">
           <span className="date">{comment.date}</span>
           <span className="devide"> | </span>
-          <span className="delete" onClick={removeComment.bind(null, comment.id)}> Удалить </span>
+          <span className="delete" onClick={delComment.bind(null, comment.id)}> Удалить </span>
         </div>
       </div>
       <div className="media-text text-justify">{clearText(comment.text)}

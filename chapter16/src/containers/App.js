@@ -29,9 +29,9 @@ export let App = ({
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
-    comments: state
+    comments: []
   }
 }
 

@@ -1,7 +1,16 @@
-import React from 'react';
+import React from 'react'
 
 export default class PostForm extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
+    this.state = {}
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>POST FORM</h1>
+      </div>
+    )
   }
 }
