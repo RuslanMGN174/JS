@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import { App, useLocalStorage } from './containers/App'
+import { App } from './containers/App'
 import * as serviceWorker from './serviceWorker'
 import { createStore } from 'redux'
 import reducer from './reducers/Reducers'
 
-const initialState = useLocalStorage('Comments', [])
+const initialState = []
 const store = createStore(reducer, initialState)
 
 ReactDOM.render(

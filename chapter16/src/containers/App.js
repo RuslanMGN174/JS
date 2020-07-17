@@ -1,29 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from '../components/Modal/Modal'
 import CommentsList from '../components/Comments/CommentList'
 import Context from '../Context'
+import { connect } from 'react-redux'
+import { addComment, delComment } from '../actions/Actions'
 
-export const App = () => {
-  const [comments, setComments] = useLocalStorage('Comments', [])
-
-  const removeComment = (id) => {
-    setComments(comments.filter(comment => comment.id !== id))
-  }
-
-  const addComment = (event) => {
-    event.preventDefault(event)
-    setComments(comments.concat([
-      {
-        id: Date.now(),
-        author: event.target.name.value,
-        text: event.target.comment.value,
-        date: new Date().toLocaleString()
-      }
-    ]))
-  }
+export let App = ({
+  comments,
+  addComment,
+  delComment
+}) => {
 
   return (
-    <Context.Provider value={{ removeComment }}>
+    <Context.Provider value={delComment}>
       <div>
         <div className="sidenav">
           <Modal
@@ -40,27 +29,45 @@ export const App = () => {
   )
 }
 
-export const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
-    } catch (error) {
-      console.log(error)
-      return initialValue
-    }
-  })
-
-  const setValue = value => {
-    try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value
-      setStoredValue(valueToStore)
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
-    } catch (error) {
-      console.log(error)
-    }
+const mapStateToProps = (state) => {
+  return {
+    comments: state
   }
-
-  return [storedValue, setValue]
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addComment: () => dispatch(addComment()),
+    delComment: (id) => dispatch(delComment(id))
+  }
+}
+
+App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
+// export const useLocalStorage = (key, initialValue) => {
+//   const [storedValue, setStoredValue] = mapStateToProps(() => {
+//     try {
+//       const item = window.localStorage.getItem(key)
+//       return item ? JSON.parse(item) : initialValue
+//     } catch (error) {
+//       console.log(error)
+//       return initialValue
+//     }
+//   })
+//
+//   const setValue = value => {
+//     try {
+//       const valueToStore =
+//         value instanceof Function ? value(storedValue) : value
+//       setStoredValue(valueToStore)
+//       window.localStorage.setItem(key, JSON.stringify(valueToStore))
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+//
+//   return [storedValue, setValue]
+// }
