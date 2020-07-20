@@ -6,8 +6,9 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { rootReducer } from './components/redux/rootReducer'
 import thunk from 'redux-thunk'
+import { forbiddenWordsMiddleware } from './components/redux/middleware'
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk),
+const store = createStore(rootReducer, compose(applyMiddleware(thunk,forbiddenWordsMiddleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 
