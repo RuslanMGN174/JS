@@ -6,8 +6,7 @@ import './index.css'
 import reducer from './reducers/Reducers'
 import * as serviceWorker from './serviceWorker'
 
-const initialState = [{ id: Date.now(), author: 'Admin', text: 'some text', date: new Date().toLocaleString() }]
-const store = createStore(reducer, initialState);
+const store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
