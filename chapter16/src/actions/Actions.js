@@ -1,8 +1,9 @@
 import { ADD_COMMENT, DEL_COMMENT } from './Types'
 
-export const addComment = () => {
+export const addComment = (comment) => {
   return {
-    type: ADD_COMMENT
+    type: ADD_COMMENT,
+    payload: comment
   }
 }
 

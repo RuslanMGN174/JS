@@ -1,24 +1,27 @@
-import React from "react";
-import NewComment from "./NewComment";
-
+import React from 'react'
+import NewComment from './NewComment'
+import { connect } from 'react-redux'
 
 const styles = {
   ul: {
-    listStyle: "none",
+    listStyle: 'none',
     margin: 0,
     padding: 0
   }
-};
+}
 
-const CommentsList = (props) => {
+const CommentsList = ({ commentsList }) => {
+  if (!commentsList.length) {
+    return <p>No comments yet!</p>
+  }
   return (
     <div>
       <ul style={styles.ul}>
-        {props.comments.map((comment, author, date) => {
+        {commentsList.map(comment => {
           return <NewComment
-            author={author}
+            author={comment.author}
             comment={comment}
-            date={date}
+            date={comment.date}
             key={comment.id}
           />
         })}
@@ -27,4 +30,10 @@ const CommentsList = (props) => {
   )
 }
 
-export default CommentsList;
+const mapStateToProps = state => {
+  return {
+    commentsList: state.comments.comments
+  }
+}
+
+export default connect(mapStateToProps, null)(CommentsList)

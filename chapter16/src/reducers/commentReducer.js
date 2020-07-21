@@ -1,6 +1,8 @@
 import { ADD_COMMENT, DEL_COMMENT } from '../actions/Types'
 
-const initialState = [{ id: Date.now(), author: 'Admin', text: 'some text', date: new Date().toLocaleString() }]
+const initialState = {
+  comments: []
+}
 
 
 const reducer = (state = initialState, action) => {

@@ -38,7 +38,6 @@ export default class Modal extends React.Component {
     isOpen: false
   }
 
-
   render() {
     return (
       <React.Fragment>
