@@ -1,26 +1,22 @@
 import { ADD_COMMENT, DEL_COMMENT } from '../actions/Types'
 
-const initialState = {
-  comments: []
+const commentsArray = () => {
+  let array = JSON.parse(localStorage.getItem('Comments'))
+  return localStorage.length ? array : []
 }
 
+const initialState = {
+  comments: commentsArray()
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT:
-      return (event) => {
-        event.preventDefault(event)
-        state.concat([
-          {
-            id: Date.now(),
-            author: event.target.name.value,
-            text: event.target.comment.value,
-            date: new Date().toLocaleString()
-          }
-        ])
+      return {
+        ...state, comments: state.comments.concat(action.payload)
       }
     case DEL_COMMENT:
-      return state.filter(state => state.id !== action.id)
+      return state.filter(comment => comment.id !== action.payload)
     default:
       return state
   }

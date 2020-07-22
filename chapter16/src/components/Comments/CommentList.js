@@ -17,12 +17,12 @@ const CommentsList = ({ commentsList }) => {
   return (
     <div>
       <ul style={styles.ul}>
-        {commentsList.map(comment => {
+        {commentsList.map((comment, author, date) => {
           return <NewComment
-            author={comment.author}
-            comment={comment}
-            date={comment.date}
             key={comment.id}
+            author={author}
+            comment={comment}
+            date={date}
           />
         })}
       </ul>

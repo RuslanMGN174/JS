@@ -1,32 +1,32 @@
-import React, { useContext } from "react";
-import "./Style.css";
-import Context from "../../Context";
+import React, { useContext } from 'react'
+import './Style.css'
+import Context from '../../Context'
 
 const NewComment = ({ comment }) => {
 
-  const { delComment } = useContext(Context);
+  const delComment = useContext(Context)
   const clearText = text => {
     return (
-      text.replace(/<!--[\s\S]*?--!?>/g, "").replace(/<\/?[a-z][^>]*(>|$)/gi, "")
+      text.replace(/<!--[\s\S]*?--!?>/g, '').replace(/<\/?[a-z][^>]*(>|$)/gi, '')
     )
   }
 
-return (
-  <li className="media-left">
-    <div className="media-body">
-      <div className="media-heading">
-        <div className="author">{comment.author}</div>
-        <div className="metadata">
-          <span className="date">{comment.date}</span>
-          <span className="devide"> | </span>
-          <span className="delete" onClick={delComment.bind(null, comment.id)}> Удалить </span>
+  return (
+    <li className="media-left">
+      <div className="media-body">
+        <div className="media-heading">
+          <div className="author">{comment.author}</div>
+          <div className="metadata">
+            <span className="date">{comment.date}</span>
+            <span className="devide"> | </span>
+            <span className="delete" onClick={() => delComment(comment.id)}> Удалить </span>
+          </div>
+        </div>
+        <div className="media-text text-justify">{clearText(comment.text)}
         </div>
       </div>
-      <div className="media-text text-justify">{clearText(comment.text)}
-      </div>
-    </div>
-  </li>
-)
-};
+    </li>
+  )
+}
 
-export default NewComment;
+export default NewComment
