@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Style.css'
-import Context from '../../Context'
 
-const NewComment = ({ comment }) => {
+const NewComment = ({ comment, onDelete }) => {
 
-  const delComment = useContext(Context)
   const clearText = text => {
     return (
       text.replace(/<!--[\s\S]*?--!?>/g, '').replace(/<\/?[a-z][^>]*(>|$)/gi, '')
@@ -19,7 +17,7 @@ const NewComment = ({ comment }) => {
           <div className="metadata">
             <span className="date">{comment.date}</span>
             <span className="devide"> | </span>
-            <span className="delete" onClick={() => delComment(comment.id)}> Удалить </span>
+            <span className="delete" onClick={() => onDelete(comment.id)}> Удалить </span>
           </div>
         </div>
         <div className="media-text text-justify">{clearText(comment.text)}

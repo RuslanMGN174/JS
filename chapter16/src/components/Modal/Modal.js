@@ -24,7 +24,7 @@ const Modal = ({ addComment }) => {
 
   return (
     <React.Fragment>
-      <a href="#about" onClick={() => setState(true)}>New comment</a>
+      <p onClick={() => setState(true)}>New comment</p>
       {state && (<div className="modal">
           <div className="modal-body">
             <form onSubmit={submitHandler}>

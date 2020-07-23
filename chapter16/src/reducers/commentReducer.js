@@ -9,17 +9,16 @@ const initialState = {
   comments: commentsArray()
 }
 
-const reducer = (state = initialState, action) => {
+export const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT:
       return {
-        ...state, comments: state.comments.concat(action.payload)
+        ...state,
+        comments: state.comments.concat(action.payload)
       }
     case DEL_COMMENT:
-      return state.filter(comment => comment.id !== action.payload)
+      return { comments: state.filter(comment => comment.id !== action.payload) }
     default:
       return state
   }
 }
-
-export default reducer

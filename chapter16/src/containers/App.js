@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from '../components/Modal/Modal'
 import CommentsList from '../components/Comments/CommentList'
 import Context from '../Context'

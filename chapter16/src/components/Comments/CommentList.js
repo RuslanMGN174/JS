@@ -1,6 +1,7 @@
 import React from 'react'
 import NewComment from './NewComment'
 import { connect } from 'react-redux'
+import { delComment } from '../../actions/Actions'
 
 const styles = {
   ul: {
@@ -10,7 +11,7 @@ const styles = {
   }
 }
 
-const CommentsList = ({ commentsList }) => {
+const CommentsList = ({ commentsList, delComment }) => {
   if (!commentsList.length) {
     return <p>No comments yet!</p>
   }
@@ -23,6 +24,7 @@ const CommentsList = ({ commentsList }) => {
             author={author}
             comment={comment}
             date={date}
+            onDelete={() => delComment(comment.id)}
           />
         })}
       </ul>
@@ -32,8 +34,14 @@ const CommentsList = ({ commentsList }) => {
 
 const mapStateToProps = state => {
   return {
-    commentsList: state.comments.comments
+    commentsList: state.comments.comments,
+    localStorage: localStorage.setItem('Comments', JSON.stringify(state.comments.comments))
   }
+
 }
 
-export default connect(mapStateToProps, null)(CommentsList)
+const mapDispatchToProps =  {
+  delComment
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsList)

@@ -10,6 +10,6 @@ export const addComment = (comment) => {
 export const delComment = (id) => {
   return {
     type: DEL_COMMENT,
-    id
+    payload: id
   }
 }
