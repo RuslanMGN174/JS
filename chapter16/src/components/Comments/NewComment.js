@@ -3,7 +3,7 @@ import './Style.css'
 
 const NewComment = ({ comment, onDelete }) => {
 
-  const clearText = text => {
+  const clearTextFromTags = text => {
     return (
       text.replace(/<!--[\s\S]*?--!?>/g, '').replace(/<\/?[a-z][^>]*(>|$)/gi, '')
     )
@@ -20,7 +20,7 @@ const NewComment = ({ comment, onDelete }) => {
             <span className="delete" onClick={() => onDelete(comment.id)}> Удалить </span>
           </div>
         </div>
-        <div className="media-text text-justify">{clearText(comment.text)}
+        <div className="media-text text-justify">{clearTextFromTags(comment.text)}
         </div>
       </div>
     </li>

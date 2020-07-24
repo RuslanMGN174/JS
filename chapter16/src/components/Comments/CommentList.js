@@ -3,21 +3,13 @@ import NewComment from './NewComment'
 import { connect } from 'react-redux'
 import { delComment } from '../../actions/Actions'
 
-const styles = {
-  ul: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0
-  }
-}
-
 const CommentsList = ({ commentsList, delComment }) => {
   if (!commentsList.length) {
     return <p>No comments yet!</p>
   }
   return (
     <div>
-      <ul style={styles.ul}>
+      <ul className="column-reverse">
         {commentsList.map((comment, author, date) => {
           return <NewComment
             key={comment.id}
@@ -40,7 +32,7 @@ const mapStateToProps = state => {
 
 }
 
-const mapDispatchToProps =  {
+const mapDispatchToProps = {
   delComment
 }
 
